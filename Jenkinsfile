@@ -1,6 +1,6 @@
 node {
     stage('Checkout SCM') {
-        git branch: 'main', url: 
+        git branch: 'main', url: 'https://github.com/piku143526/vias-testing.git'
     }
 
     stage('Install node modules'){
