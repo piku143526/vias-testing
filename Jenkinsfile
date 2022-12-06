@@ -15,8 +15,8 @@ pipeline {
       steps {
         sh 'npm install'
          sh 'ng lint'
-          sh 'npm run test --watch=false'
-           sh 'ng build --prod'
+          sh 'npm start'
+           sh 'ng build'
       }
     }  
     
