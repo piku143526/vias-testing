@@ -7,7 +7,7 @@ node {
     }
     
     stage('Build'){
-        sh "npm build"
+        sh "npm build angular_pro_test"
     }
   
 }
