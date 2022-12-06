@@ -6,6 +6,10 @@ node {
     stage('Install node modules'){
         sh "npm install"
     }
+ 
+    stage("Upgrade nodejs"){
+        sh "apt-get install --only-upgrade nodejs"
+    }
     stage("Start"){
         sh "npm start"
     }
