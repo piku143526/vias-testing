@@ -14,7 +14,5 @@ node {
                     sh 'npm config ls'
                 }
  
-    stage("Build"){
-        sh "ng build"
-    }
+ 
 }
