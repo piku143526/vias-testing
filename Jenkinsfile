@@ -7,12 +7,6 @@ node {
         sh "npm install"
     }
  
-    stage("Upgrade nodejs"){
-        sh "sudo apt-get install --reinstall nodejs-legacy"
-    }
-    stage("Start"){
-        sh "npm start"
-    }
     stage("Build"){
         sh "npm run build --prod"
     }
