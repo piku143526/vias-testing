@@ -6,8 +6,8 @@ node {
     stage('Install node modules'){
         sh "npm install"
     }
-    stage("Test"){
-        sh "npm run test-headless"
+    stage("Start"){
+        sh "npm start"
     }
     stage("Build"){
         sh "npm run build --prod"
