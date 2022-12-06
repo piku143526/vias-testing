@@ -14,7 +14,9 @@ pipeline {
     stage('Build') {
       steps {
         sh 'npm install'
-         sh 'ng build'
+         sh 'ng lint'
+          sh 'npm run test --watch=false'
+           sh 'ng build --prod'
       }
     }  
     
