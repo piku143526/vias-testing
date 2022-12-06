@@ -1,30 +1,15 @@
-pipeline {
-  agent any
-    
-  tools {nodejs "node"}
-    
-  stages {
-        
-    stage('Git') {
-      steps {
-        git 'https://github.com/piku143526/vias-testing.git'
-      }
+node {
+    stage('Checkout SCM') {
+        git branch: 'main', url: 
     }
-     
-    stage('Build') {
-      steps {
-        sh 'npm install'
-         sh 'ng lint'
-          sh 'npm start'
-           sh 'ng build'
-      }
-    }  
-    
-            
-    stage('Test') {
-      steps {
-        sh 'node test'
-      }
+
+    stage('Install node modules'){
+        sh "npm Install"
     }
-  }
+    stage('Test'){
+        sh "npm run test-headless"
+    }
+    stage('Build'){
+        sh "npm run build --prod"
+    }
 }
