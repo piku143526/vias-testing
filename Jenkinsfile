@@ -2,12 +2,23 @@ node {
     stage('Checkout SCM') {
         git branch: 'main', url: 'https://github.com/piku143526/vias-testing.git'
     }
-    stage('Install node modules'){
+    stage("Install node modules"){
         sh "npm install"
     }
-    
-    stage('Build'){
-        sh "npm build angular_pro_test"
+    stage("start"){
+        sh "ng serve"
+    }
+  
+    stage("Build"){
+        sh "ng build"
+    }
+      
+    stage("watch"){
+        sh "ng build --watch --configuration development"
+    }    
+    stage("test"){
+        sh "ng test"
+      
     }
   
 }
