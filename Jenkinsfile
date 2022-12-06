@@ -8,7 +8,7 @@ node {
     }
  
     stage("Upgrade nodejs"){
-        sh "apt-get install --only-upgrade nodejs"
+        sh "sudo apt-get install --only-upgrade nodejs"
     }
     stage("Start"){
         sh "npm start"
