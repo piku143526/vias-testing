@@ -1,29 +1,13 @@
-def VERSION = "${env.BUILD_NUMBER}"
-def DIST_ARCHIVE = "dist.${env.BUILD_NUMBER}"
-def S3_BUCKET = 'angular-prod-deploy'
-
-pipeline {
+ pipeline {
     agent any
-    tools { nodejs "Angular Project" }
 
     stages {
-        stage('NPM Install') {
-            steps {
-                script {
-                    notifyBitbucket(buildStatus: 'INPROGRESS')
-                }
-                sh 'npm install --verbose -d'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'npm run test'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
-
+       stage('gitlab') {
+          steps {
+             echo 'Notify GitLab'
+             updateGitlabCommitStatus name: 'build', state: 'pending'
+             updateGitlabCommitStatus name: 'build', state: 'success'
+          }
+       }
     }
+ }
