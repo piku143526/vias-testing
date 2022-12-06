@@ -4,12 +4,12 @@ node {
     }
 
     stage('Install node modules'){
-        sh "npm Install"
+        sh "npm install"
     }
-    stage('Test'){
+    stage("Test"){
         sh "npm run test-headless"
     }
-    stage('Build'){
+    stage("Build"){
         sh "npm run build --prod"
     }
 }
