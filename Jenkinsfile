@@ -14,7 +14,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'npm install'
-         sh 'ng build my-app -c production'
+         sh 'ng build'
       }
     }  
     
