@@ -13,7 +13,7 @@ node {
     }
       
     stage("Deploy"){
-       sh "pm2 restart all"
+       sh "npm run build --prod"
     }
   
     stage("test"){
