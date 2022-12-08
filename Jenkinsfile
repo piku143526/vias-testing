@@ -1,20 +1,31 @@
-node {
-    stage('Checkout SCM') {
-        git branch: 'main', url: 'https://github.com/piku143526/vias-testing.git'
+pipeline {
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
+        }
     }
-    stage("Install node modules"){
-        sh "npm install"
+     environment {
+            CI = 'true'
+        }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Test') {
+                    steps {
+                        sh './jenkins/scripts/test.sh'
+                    }
+                }
+                stage('Deliver') {
+                            steps {
+                                sh './jenkins/scripts/deliver.sh'
+                                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                                sh './jenkins/scripts/kill.sh'
+                            }
+                        }
+
     }
-    stage("Build"){
-        sh "ng build"
-    }
-      
-    stage("watch"){
-        sh "ng build --watch --configuration development"
-    }    
-    stage("test"){
-        sh "ng test"
-      
-    }
-  
 }
