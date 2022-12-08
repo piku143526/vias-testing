@@ -4,10 +4,15 @@ node {
     }
     stage("Install node modules"){
         sh "npm install"
-        sh "npm install -g npm"
+        
         
         
     }
+    nodejs(nodeJSInstallationName: "Node 8.11") {
+      "npm config ls"
+      "node -v"
+      "npm"
+}
     stage("Build"){
         sh "ng build"
     }
