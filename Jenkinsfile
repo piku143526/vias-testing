@@ -4,7 +4,9 @@ node {
     }
     stage("Install node modules"){
         sh "npm install"
-        sh "nvm install"
+        sh "npm install -g @angular/cli@v18.12.1"
+        
+        
     }
     stage("Build"){
         sh "ng build"
