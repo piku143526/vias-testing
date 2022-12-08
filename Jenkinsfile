@@ -7,14 +7,18 @@ node {
         sh "npm install"
             
     }
-    
+    stage("Test"){
+      sh "npm run test-headless"
+      
+    }  
     stage("Build"){
         sh "ng build"
     }
       
-    stage("watch"){
-        sh "ng build --watch --configuration development"
-    }    
+    stage("Deploy"){
+       sh "pm2 restart all"
+    }
+  
     stage("test"){
         sh "ng test"
       
