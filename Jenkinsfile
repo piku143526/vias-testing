@@ -4,6 +4,7 @@ node {
     }
     stage("Install node modules"){
         sh "npm install"
+        sh "nvm alias default v18.10"
     }
     stage("Build"){
         sh "ng build"
