@@ -9,10 +9,10 @@ node {
       "node -v"
       "npm"
 }
-    stage("Install node modules"){
-        sh "npm install"
+    #stage("Install node modules"){
+     #   sh "npm install"
             
-    }
+    #}
     
     stage("Build"){
         sh "ng build"
