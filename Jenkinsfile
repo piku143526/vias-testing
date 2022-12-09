@@ -15,5 +15,10 @@ node {
     stage("Deploy"){
        sh "npm run build --prod"
     }
+    
+    stage("test"){
+        sh "ng test"
+      
+    }
   
 }
