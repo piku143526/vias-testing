@@ -1,24 +1,33 @@
-node {
-    stage('Checkout SCM') {
-        git branch: 'main', url: 'https://github.com/piku143526/vias-testing.git'
+pipeline {
+  agent any
+    
+    
+  stages {
+        
+    stage('Git Checkout SCM') {
+      steps {
+         git branch: 'main', url: 'https://github.com/piku143526/vias-testing.git'
+      }
     }
- 
-    stage("Install node modules"){
-        sh "npm install"
+     
+
+    stage('Install node modules') {
+        steps {
+          sh 'npm install'
+        }
+    }
+
+    stage('Build') {
+      steps {
+        sh 'ng build'
+      }
+    }  
+    
+    stage('Deploy') {
+      staps {
+        sh 'npm run build --prod'
+      }
             
     }
-   
-    stage("Build"){
-        sh "ng build"
-    }
-      
-    stage("Deploy"){
-       sh "npm run build --prod"
-    }
-    
-    stage("test"){
-        sh "ng test"
-      
-    }
-  
+  }
 }
