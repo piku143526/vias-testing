@@ -6,11 +6,14 @@ pipeline {
         
     stage('Git Checkout SCM') {
       steps {
-         git 'https://github.com/piku143526/vias-testing.git'
+         git url: 'https://github.com/piku143526/vias-testing.git', branch: 'main'
+                // Change file permisson
+                sh "chmod +x -R ./jenkins"
+                // Run shell script
+                sh "./jenkins/script/scripted_pipeline_ex_2.sh"
       }
     }
      
-
     stage('Install node modules') {
         steps {
           sh 'npm install'
@@ -18,8 +21,8 @@ pipeline {
     }
 
     stage('Build') {
-       steps {
-         sh 'ng build'
+      steps {
+        sh 'ng build'
       }
     }  
     
