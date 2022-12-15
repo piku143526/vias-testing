@@ -18,13 +18,13 @@ pipeline {
     }
 
     stage('Build') {
-      steps {
-        sh 'ng build'
+       steps {
+         sh 'ng build'
       }
     }  
     
     stage('Deploy') {
-      staps {
+      steps {
         sh 'npm run build --prod'
       }
             
