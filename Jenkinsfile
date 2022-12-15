@@ -29,8 +29,12 @@ pipeline {
     stage('Deploy') {
       steps {
         sh 'npm run build --prod'
+      }       
+    }
+    Stage('Test') {
+      steps {
+        sh 'echo "Hello Anjali"' 
       }
-            
     }
   }
 }
