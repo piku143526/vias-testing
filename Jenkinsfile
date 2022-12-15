@@ -6,7 +6,7 @@ pipeline {
         
     stage('Git Checkout SCM') {
       steps {
-         git branch: 'main', url: 'https://github.com/piku143526/vias-testing.git'
+         git 'https://github.com/piku143526/vias-testing.git'
       }
     }
      
